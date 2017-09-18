@@ -64,7 +64,7 @@ const char* ut71::rangelut[17][8]  =
 {"4", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
 {"40", "400", "4k", "40k", "400k", "4M", "40M", "400M"},
 {"1832", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
-{"ERR0", "ERR1", "ERR2", "ERR3", "ERR4", "ERR5", "ERR6", "ERR7"},
+{"ERR0", "ERR1", "ERR2", "1W", "ERR4", "ERR5", "ERR6", "ERR7"},
 {"100", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
 {"100", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"}
 };
