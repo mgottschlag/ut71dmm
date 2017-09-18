@@ -1,0 +1,6 @@
+set datafile separator comma
+
+plot @data using 8 with lines title column(3)
+
+pause 1
+reread

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+data=$(mktemp -t ut71dmm.XXXX)
+echo $data
+
+sleep 3 && gnuplot -e "data='\"$data\"'" "$DIR/live.gpi" &
+
+sudo "$DIR/../ut71dmm" > "$data"
