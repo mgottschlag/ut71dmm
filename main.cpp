@@ -51,11 +51,11 @@ int main(int argc, char* argv[])
         devs = hid_enumerate(0x1a86, 0xe008);
         cur_dev = devs;
         while(cur_dev){cur_dev = cur_dev->next; dev_cnt++; }
-        printf("[!] found %i devices:\n",dev_cnt);
+        fprintf(stderr, "[!] found %i devices:\n",dev_cnt);
 
         cur_dev = devs; 
         while (cur_dev){
-            printf("%s\n", cur_dev->path);
+            fprintf(stderr, "%s\n", cur_dev->path);
             cur_dev = cur_dev->next;
         }
 
@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
     if(handle==0) handle = hid_open(0x1a86, 0xe008, NULL); // 1a86 e008
 
     if (!handle) {
-        printf("unable to open device\n");
+        fprintf(stderr, "unable to open device\n");
         return 1;
     }
 
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
     buf[3] = bps>>24;
     res = hid_send_feature_report(handle, buf, 4); // 4 bytes
     if (res < 0)
-        printf("Unable to send a feature report.\n");
+        fprintf(stderr, "Unable to send a feature report.\n");
 
     memset(buf,0,sizeof(buf));
 
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
     unsigned char packet[PACKET_SIZE];
     memset(packet,0,sizeof(packet));
 
-    printf("-data start-\n");
+    fprintf(stderr, "-data start-\n");
 
     usleep(1000);
 
@@ -112,9 +112,9 @@ int main(int argc, char* argv[])
         while (res == 0){
             res = hid_read(handle, buf, sizeof(buf));
             if (res == 0)
-                printf("waiting...\n");
+                fprintf(stderr, "waiting...\n");
             if (res < 0)
-                printf("Unable to read()\n");
+                fprintf(stderr, "Unable to read()\n");
         }
 
         int len=buf[0] & 0x07; //extract length
@@ -122,8 +122,8 @@ int main(int argc, char* argv[])
         if(len==1){
 
             //print received data for debugging:
-            //printf("%x ", buf[1]&0x0F);
-            //printf("%x ", buf[1]);
+            //fprintf(stderr, "%x ", buf[1]&0x0F);
+            //fprintf(stderr, "%x ", buf[1]);
             //fflush(stdout);
 
             //reconstruct packet
