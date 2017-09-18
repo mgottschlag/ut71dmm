@@ -41,7 +41,7 @@
 //11: Diode
 //12: Freqency
 //13: Temperature Farenheit
-//14: unknown (doesn't exist?)
+//14: Power
 //15: 4-20mA loop current
 //16: Duty cycle (this mode is fake. The received data from the meter doesnt
 //                differentiate between freq and duty mode.
@@ -64,7 +64,7 @@ const char* ut71::rangelut[17][8]  =
 {"4", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
 {"40", "400", "4k", "40k", "400k", "4M", "40M", "400M"},
 {"1832", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
-{"ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
+{"ERR0", "ERR1", "ERR2", "ERR3", "ERR4", "ERR5", "ERR6", "ERR7"},
 {"100", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"},
 {"100", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR", "ERR"}
 };
@@ -89,7 +89,7 @@ const long double ut71::multlut[17][8]  =
 {1e-4l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l},
 {1e-3l, 1e-2l, 1e-1l, 1.0l, 1e1l, 1e2l, 1e3l, 1e4l},
 {1e-1l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l},
-{1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l},
+{1.0l, 1.0l, 1.0l, 1e-1l, 1.0l, 1.0l, 1.0l, 1.0l},
 {1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l},
 {1e-2l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l, 1.0l}
 };
@@ -97,7 +97,7 @@ const long double ut71::multlut[17][8]  =
 const char* ut71::functionlut[] = 
 {"mV_AC", "V_DC", "V_AC", "mV_DC", "Ohm", "Farad", "Deg_C", 
 "uA", "mA", "A", "Beep", "Diode", "Freq", "Deg_F",
-"unknown", "4-20mA_loop", "Duty"};
+"Power", "4-20mA_loop", "Duty"};
 
 const char* ut71::acdcmodelut[] = {"DC", "AC", "unknown", "AC+DC"};
 
