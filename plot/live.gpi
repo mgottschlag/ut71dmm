@@ -1,6 +1,9 @@
 set datafile separator comma
 
-plot @data using 8 with lines title column(3)
+cmd = sprintf('< awk -Mf %s %s', @filter_awk, @data)
+
+plot @data using 8 with points title column(3), \
+     cmd with lines title "filtered"
 
 pause 1
 reread
