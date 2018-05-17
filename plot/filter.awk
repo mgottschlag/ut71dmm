@@ -17,5 +17,6 @@ BEGIN {
 	values[NR] = $8;
 	delete values[NR - len];
 
-	print avg(values), $3;
+	if (NR > len / 2)
+		print avg(values), $3;
 }
