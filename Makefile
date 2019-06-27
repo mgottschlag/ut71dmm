@@ -9,11 +9,11 @@ all: ut71dmm
 
 CC=gcc
 CXX=g++
-COBJS=./hidapi/libusb/hid.o
+#COBJS=./hidapi/libusb/hid.o
 CPPOBJS=./main.o ./ut71.o
 OBJS=$(COBJS) $(CPPOBJS)
-CFLAGS+=-I./hidapi/hidapi -Wall -g -c `pkg-config libusb-1.0 --cflags`
-LIBS=`pkg-config libusb-1.0 libudev --libs`
+CFLAGS+= -Wall -g -c `pkg-config hidapi-hidraw libusb-1.0 --cflags`
+LIBS=`pkg-config hidapi-hidraw libusb-1.0 libudev --libs`
 
 
 ut71dmm: $(OBJS)
